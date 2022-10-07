@@ -14,6 +14,16 @@ addBtn.onclick = function() {
     } else{
         ul.innerHTML=`<li>${languageInput.value}</li>`;
         languageInput.value = '';
+        javascriptControl();
     }
    
+};
+
+const javascriptControl = () => {
+    document.querySelectorAll('ul li').forEach((language) =>{ const alphabet = language.textContent.toLowerCase();
+        if(alphabet === 'javascript') {
+            language.className = 'red';
+        }
+
+    });
 }
