@@ -12,7 +12,7 @@ addBtn.onclick = function() {
     if (!languageInput.value){
         alert('Please write a language');
     } else{
-        ul.innerHTML=`<li>${languageInput.value}</li>`;
+        ul.innerHTML +=`<li>${languageInput.value}</li>`;
         languageInput.value = '';
         javascriptControl();
     }
@@ -26,4 +26,26 @@ const javascriptControl = () => {
         }
 
     });
-}
+};
+
+delBtn.onclick = function () {
+    ul.childElementCount > 0
+      ? ul.removeChild(ul.lastElementChild)
+      : alert('There are no languages!');
+  };
+
+languageInput.addEventListener('keydown', (e)=> {
+    console.log(e);
+    if(e.code === 'Enter'){
+        addBtn.onclick();
+    }
+    if (e.code === 'Delete') {
+        delBtn.onclick();
+      }
+
+});
+
+window.onload = () => {
+    javascriptControl();
+    languageInput.focus();
+};
